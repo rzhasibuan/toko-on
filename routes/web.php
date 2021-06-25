@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// livewire
+Route::livewire('/admin/product', 'product.index')
+->middleware('auth')
+->name('admin.product');
