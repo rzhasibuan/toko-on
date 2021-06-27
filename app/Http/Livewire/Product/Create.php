@@ -33,11 +33,12 @@ class Create extends Component
 
         if($this->image) 
         {
+            // make name for the file
             $imageName = \Str::slug($this->title, '-')
             . '-'
             .uniqid()
             . '-'.$this->image->getClientOriginalExtension();
-
+            // save to directory 
             $this->image->storeAs('public', $imageName, 'local');
         }
 

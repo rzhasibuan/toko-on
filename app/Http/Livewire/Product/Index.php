@@ -11,10 +11,12 @@ class Index extends Component
     public $paginate = 10;
     public $search ;
     public $formVisible;
+    public $formUpdate = false;
 
     protected $listeners = [
         'formClose' => 'formCloseHandler',
-        'productStore' => 'produkStoreHandler'
+        'productStore' => 'produkStoreHandler',
+        'productUpdated' => 'productUpdatedHandler'
     ];
     
     // this method for the make pretty url from search using except 
@@ -50,6 +52,21 @@ class Index extends Component
     {
         $this->formVisible = false;
         session()->flash('message', 'Your product has been created');
+    }
+
+    public function editProduct($productId)
+    {
+        $this->formUpdate = true;
+        $this->formVisible = true;
+
+        $product = Product::find($productId);
+        $this->emit('editProduct', $product);
+    }
+
+    public function productUpdatedHandler()
+    {
+        $this->formVisible = false;
+        session()->flash('message', 'Your product has been updated');
     }
     
 }

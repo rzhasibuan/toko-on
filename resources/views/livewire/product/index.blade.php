@@ -1,6 +1,10 @@
 <div class="container">
     @if ($formVisible)
-        @livewire('product.create')
+        @if (! $formUpdate)
+            @livewire('product.create')
+        @else
+            @livewire('product.update')
+        @endif
     @endif
 
     {{-- @livewire('counter') --}}
