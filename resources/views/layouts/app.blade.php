@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- livewire --}}
+    @livewireScripts
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -82,7 +84,7 @@
         </main>
     </div>
     {{-- livewire --}}
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
 </body>
 </html>

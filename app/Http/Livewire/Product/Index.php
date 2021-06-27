@@ -10,6 +10,12 @@ class Index extends Component
     // public variabel
     public $paginate = 10;
     public $search ;
+    public $formVisible;
+
+    protected $listeners = [
+        'formClose' => 'formCloseHandler',
+        'productStore' => 'produkStoreHandler'
+    ];
     
     // this method for the make pretty url from search using except 
     public $updatesQueryString = [
@@ -21,6 +27,7 @@ class Index extends Component
     {
         $this->search = request()->query('search',$this->search);
     }
+
     
     public function render()
     // if search is null show tables with paginate 
@@ -34,6 +41,14 @@ class Index extends Component
         ]);
     }
 
-    
+    public function formCloseHandler()
+    {
+        $this->formVisible = false;
+    }
+
+    public function produkStoreHandler()
+    {
+        $this->formVisible = false;
+    }
     
 }

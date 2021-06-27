@@ -1,9 +1,17 @@
-
 <div class="container">
+    @if ($formVisible)
+        @livewire('product.create')
+    @endif
+
+    {{-- @livewire('counter') --}}
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">
+                    <button wire:click='$toggle("formVisible")' class="btn btn-sm btn-primary">Create</button>
+                    <hr>
+                    <h3>Product</h3>
+                </div>
 
                 <div class="card-body">
 
