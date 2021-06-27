@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::livewire('/admin/product', 'product.index')
 ->middleware('auth')
 ->name('admin.product');
+
+Route::livewire('/shop', 'shop.index')
+->name('shop.index');
