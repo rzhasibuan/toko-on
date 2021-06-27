@@ -4,8 +4,8 @@ namespace App\Helpers;
 
 use App\Product;
 
-class Cart{
-
+class Cart
+{
     public function __construct()
     {
         if($this->get() === null)
@@ -13,6 +13,7 @@ class Cart{
             $this->set($this->empty());
         }
     }
+    
     public function set($cart)
     {
         request()->session()->put('cart', $cart);
@@ -34,6 +35,8 @@ class Cart{
     {
         $cart = $this->get();
         array_push($cart['products'], $product);
+        $this->set($cart);
+
     }
 
     public function remove($productId)

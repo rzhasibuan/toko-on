@@ -15,8 +15,8 @@ class CartServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::bind('cart', function(){
-            return new Cart;
+        App::bind('cart', function () {
+            return new Cart();
         });
     }
 
