@@ -56,9 +56,9 @@
                                     </span>
                                     @enderror
 
-                                    {{-- @if ($image)
+                                    @if ($image)
                                         <img src="{{ $image->temporaryUrl() }}" alt="" height="200">
-                                    @endif --}}
+                                    @endif
                                 </div>
                             </div>
                         </div>
