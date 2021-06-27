@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Product;
 
 use App\Product;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class Index extends Component
@@ -67,6 +68,19 @@ class Index extends Component
     {
         $this->formVisible = false;
         session()->flash('message', 'Your product has been updated');
+    }
+
+    public function deleteProduct($productId)
+    {
+        $product = Product::find($productId);
+
+        if($product->image)
+        {
+            Storage::disk('public')->delete($product->image);
+        }
+
+        $product->delete();
+        session()->flash('message','Your product hs been deleted!');
     }
     
 }
