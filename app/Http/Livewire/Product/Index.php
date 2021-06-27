@@ -49,6 +49,7 @@ class Index extends Component
     public function produkStoreHandler()
     {
         $this->formVisible = false;
+        session()->flash('message', 'Your product has been created');
     }
     
 }

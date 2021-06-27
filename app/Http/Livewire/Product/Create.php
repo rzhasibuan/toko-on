@@ -18,6 +18,12 @@ class Create extends Component
 
     public function store()
     {
+        $this->validate([
+            'title' => 'required|min:3',
+            'description' => 'required|max:100',
+            'price' => 'required|numeric',
+        ]);
+        
         Product::create([
             'title' => $this->title,
             'price' => $this->price,
