@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- livewire --}}
     @livewireScripts
 
     <!-- Fonts -->
@@ -20,10 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    {{-- livewire --}}
     @livewireStyles
-
 </head>
 <body>
     <div id="app">
@@ -40,9 +36,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ route('shop.index') }}" class="nav-link">shop</a>
+                            <a href="{{ route('shop.index') }}" class="nav-link">Shop</a>
                         </li>
-                        @livewire('shop.cartnav')
+                        @livewire('shop.cartnav');
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -60,18 +56,20 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="{{ route('admin.product') }}" class="dropdown-item">Products</a>
+
+                                    <a href="{{ route('admin.product') }}" class="dropdown-item">Products</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -86,8 +84,6 @@
             @yield('content')
         </main>
     </div>
-    {{-- livewire --}}
-    {{-- @livewireScripts --}}
-
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.clientKey') }}"></script>
 </body>
 </html>
