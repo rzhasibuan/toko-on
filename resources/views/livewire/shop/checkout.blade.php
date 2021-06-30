@@ -85,6 +85,7 @@
                         </form>
                     @else
                         <button wire:click="$emit('payment', '{{ $snapToken }}')" class="btn btn-primary">Payment</button>
+                        
                         <script>
                             window.livewire.on('payment', function (snapToken) {
                                 snap.pay(snapToken, {
